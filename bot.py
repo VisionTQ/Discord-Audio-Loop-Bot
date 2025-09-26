@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import asyncio
+from keep_alive import keep_alive
 
 bot = commands.Bot(command_prefix='!')
 
@@ -22,5 +23,6 @@ async def on_ready():
         voice_client.play(discord.FFmpegPCMAudio(file_path))
         await asyncio.sleep(voice_client.source.duration)
         voice_client.stop()
-
+        
+keep_alive()
 bot.run('YOUR_DISCORD_BOT_TOKEN')  # Replace with your Discord bot token
